@@ -5,7 +5,7 @@
 ################################################################################
 
 
-MUPEN64PLUS_GLIDEN64_VERSION = 34fa719a61fa2338025facc9810ad2ef1a00e7ee
+MUPEN64PLUS_GLIDEN64_VERSION = 72872963b8981e39dec66cfac77324f126c79e80
 MUPEN64PLUS_GLIDEN64_SITE = $(call github,gonetz,GLideN64,$(MUPEN64PLUS_GLIDEN64_VERSION))
 MUPEN64PLUS_GLIDEN64_LICENSE = MIT
 MUPEN64PLUS_GLIDEN64_DEPENDENCIES = sdl2 alsa-lib mupen64plus-core rpi-userland

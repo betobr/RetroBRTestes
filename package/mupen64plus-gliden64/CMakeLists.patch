@@ -1,16 +1,9 @@
 --- a/src/GLideNHQ/CMakeLists.txt	2015-10-21 17:57:48.613858250 +0200
 +++ b/src/GLideNHQ/CMakeLists.txt	2015-10-20 21:08:10.000000000 +0200
-@@ -57,13 +57,28 @@
+@@ -63,6 +63,29 @@ if( CMAKE_BUILD_TYPE STREQUAL "Debug")
  	)
  endif( CMAKE_BUILD_TYPE STREQUAL "Debug")
  
--find_package(OpenGL REQUIRED)
--include_directories(${OpenGL_INCLUDE_DIRS})
--link_directories(${OpenGL_LIBRARY_DIRS})
--add_definitions(${OpenGL_DEFINITIONS})
--if(NOT OPENGL_FOUND)
--	message(ERROR " OPENGL not found!")
--endif(NOT OPENGL_FOUND)
 +if(GLES2)
 +  add_definitions(
 +    -DGLES2
@@ -33,6 +26,7 @@
 +    OGL3X/UniformBlock.cpp
 +  )
 +endif(GLES2)
- 
++
  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
  	add_definitions( -D__MSC__)
+ endif()
