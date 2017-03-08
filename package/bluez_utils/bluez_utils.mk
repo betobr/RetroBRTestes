@@ -27,8 +27,7 @@ endif
 ifeq ($(BR2_PACKAGE_BLUEZ_UTILS_AUDIO),y)
 BLUEZ_UTILS_DEPENDENCIES +=	\
 	alsa-lib		\
-	libsndfile		\
-	libvorbis
+	libsndfile
 BLUEZ_UTILS_CONF_OPTS +=	\
 	--enable-alsa	\
 	--enable-audio
