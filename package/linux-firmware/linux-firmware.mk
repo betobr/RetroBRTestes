@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LINUX_FIRMWARE_VERSION = a179db97914da5e650c21ba8f9b0bae04a0f8a41
+LINUX_FIRMWARE_VERSION = 6d3bc8886517d171068fd1263176b8b5c51df204
 LINUX_FIRMWARE_SITE = http://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 LINUX_FIRMWARE_SITE_METHOD = git
 
@@ -14,30 +14,14 @@ LINUX_FIRMWARE_FILES += intel/fw_sst_0f28.bin-48kHz_i2s_master
 LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.fw_sst_0f28
 endif
 
+ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_I915),y)
+LINUX_FIRMWARE_DIRS += i915
+LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENSE.i915
+endif
+
 ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_RADEON),y)
 LINUX_FIRMWARE_DIRS += radeon
 LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENSE.radeon
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_NVIDIA),y)
-LINUX_FIRMWARE_DIRS += nvidia
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENSE.nvidia
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_AMDGPU),y)
-LINUX_FIRMWARE_DIRS += amdgpu
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_I915),y)
-LINUX_FIRMWARE_DIRS += i915
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_R128),y)
-LINUX_FIRMWARE_DIRS += r128
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_MATROX),y)
-LINUX_FIRMWARE_DIRS += matrox
 endif
 
 # Intel Wireless Bluetooth
@@ -74,8 +58,7 @@ LINUX_FIRMWARE_FILES += \
 	rtlwifi/rtl8192defw.bin rtlwifi/rtl8192sefw.bin		\
 	rtlwifi/rtl8188efw.bin rtlwifi/rtl8188eufw.bin		\
 	rtlwifi/rtl8192cufw_A.bin				\
-	rtlwifi/rtl8192cufw_B.bin rtlwifi/rtl8192cufw_TMSC.bin  \
-        rtl_bt/rtl8192ee_fw.bin  rtl_bt/rtl8192eu_fw.bin
+	rtlwifi/rtl8192cufw_B.bin rtlwifi/rtl8192cufw_TMSC.bin
 LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.rtlwifi_firmware.txt
 endif
 
@@ -83,9 +66,7 @@ endif
 ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_RTL_87XX),y)
 LINUX_FIRMWARE_FILES += \
 	rtlwifi/rtl8712u.bin rtlwifi/rtl8723fw.bin \
-	rtlwifi/rtl8723fw_B.bin rtlwifi/rtl8723befw.bin \
-	rtl_bt/rtl8723a_fw.bin  rtl_bt/rtl8723b_fw.bin \
-        rtl_bt/rtl8761a_fw.bin
+	rtlwifi/rtl8723fw_B.bin rtlwifi/rtl8723befw.bin
 LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.rtlwifi_firmware.txt
 endif
 
@@ -93,9 +74,7 @@ endif
 ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_RTL_88XX),y)
 LINUX_FIRMWARE_FILES += \
 	rtlwifi/rtl8821aefw.bin \
-	rtlwifi/rtl8821aefw_wowlan.bin \
-        rtl_bt/rtl8812ae_fw.bin \
-        rtl_bt/rtl8821a_fw.bin
+	rtlwifi/rtl8821aefw_wowlan.bin
 LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.rtlwifi_firmware.txt
 endif
 
@@ -114,47 +93,6 @@ endif
 # ar6004
 ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_6004),y)
 LINUX_FIRMWARE_FILES += ath6k/AR6004
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-# ath10k
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA4019),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA4019
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA6174),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA6174
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA9377),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA9377
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA9887),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA9887
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA9888),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA9888
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA988X),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA988X
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA9984),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA9984
-LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
-endif
-
-ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_ATHEROS_QCA99X0),y)
-LINUX_FIRMWARE_FILES += ath10k/QCA99X0
 LINUX_FIRMWARE_ALL_LICENSE_FILES += LICENCE.atheros_firmware
 endif
 
@@ -381,6 +319,9 @@ endif
 
 ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_RTL_8169),y)
 LINUX_FIRMWARE_FILES += \
+	rtl_nic/rtl8105e-1.fw \
+	rtl_nic/rtl8106e-1.fw \
+	rtl_nic/rtl8106e-2.fw \
 	rtl_nic/rtl8168d-1.fw \
 	rtl_nic/rtl8168d-2.fw \
 	rtl_nic/rtl8168e-1.fw \
@@ -388,14 +329,13 @@ LINUX_FIRMWARE_FILES += \
 	rtl_nic/rtl8168e-3.fw \
 	rtl_nic/rtl8168f-1.fw \
 	rtl_nic/rtl8168f-2.fw \
-	rtl_nic/rtl8105e-1.fw \
+	rtl_nic/rtl8168g-2.fw \
+	rtl_nic/rtl8168g-3.fw \
+	rtl_nic/rtl8168h-1.fw \
+	rtl_nic/rtl8168h-2.fw \
 	rtl_nic/rtl8402-1.fw \
 	rtl_nic/rtl8411-1.fw \
-	rtl_nic/rtl8411-2.fw \
-	rtl_nic/rtl8106e-1.fw \
-	rtl_nic/rtl8106e-2.fw \
-	rtl_nic/rtl8168g-2.fw \
-	rtl_nic/rtl8168g-3.fw
+	rtl_nic/rtl8411-2.fw
 endif
 
 ifeq ($(BR2_PACKAGE_LINUX_FIRMWARE_XCx000),y)
