@@ -1,0 +1,10 @@
+config BR2_PACKAGE_KODI_PERIPHERAL_JOYSTICK
+	bool "kodi-peripheral-joystick"
+	select BR2_PACKAGE_KODI
+	select BR2_PACKAGE_KODI_PLATFORM
+	select BR2_PACKAGE_PCRE
+	select BR2_PACKAGE_LIBPLATFORM
+	help
+	  Kodi inputstream addon for several manifest types
+
+	  https://github.com/peak3d/inputstream.adaptive

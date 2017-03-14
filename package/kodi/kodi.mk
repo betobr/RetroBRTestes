@@ -6,7 +6,7 @@
 
 # When updating the version, please also update kodi-jsonschemabuilder
 # and kodi-texturepacker
-KODI_VERSION = e0a6f4cd9a452b3063d0a0afe85672cdb5b2abcc
+KODI_VERSION = c6d0bb5de80666f551d7a199936fb3de5bf2b81d
 KODI_SITE = $(call github,xbmc,xbmc,$(KODI_VERSION))
 KODI_LICENSE = GPLv2
 KODI_LICENSE_FILES = LICENSE.GPL
